@@ -1,44 +1,64 @@
 @import 'variables';
+@import 'mixins';
 @import url('https://fonts.googleapis.com/css?family=Oswald:600|EB+Garamond:400,400i,700');
-
-@function cell-width($number) {
-  @return (($card-width - ($card-padding * 2) - ($cell-margin * ($number * 2)) - $card-first-child-width - $card-last-child-width) / $number)
-}
-
-@mixin flex-col() {
-  display: flex;
-  flex-flow: column nowrap;
-}
-
-@mixin flex-row() {
-  display: flex;
-  flex-flow: row nowrap;
-}
-
-@mixin row-data($padding) {
-  text-align: center;
-  margin: $cell-margin;
-  padding: $padding;
-  &:first-child {
-    flex: 0 0 $card-first-child-width;
-    text-align: left;
-    padding-left: 3px;
-    margin: 1px 1px 1px 0;
-  }
-  &:last-child {
-    margin: 1px 0 1px 1px;
-  }
-}
-
-@mixin bold() {
-  font-weight: bold;
-  font-family: 'Oswald', sans-serif;
-}
 
 body {
   font-family: 'EB Garamond', serif;
 }
+
+h1 {
+  @include bold;
+  text-align: center;
+  font-size: 42pt;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+#campaign {
+  margin-bottom: 20px;
+}
+
+.campaign {
+  @include flex-row;
+  >div {
+    flex: 1 0;
+    margin: 1px;
+    padding: 3px;
+    border: 1px solid #000;
+  }
+}
+
+.campaign-header {
+  @include bold;
+  @include red;
+}
+
+.roster-header {
+  @include flex-row;
+  @include bold;
+  @include red;
+  div {
+    flex: 1 0;
+    margin: 1px;
+    padding: 3px;
+    text-align: center;
+  }
+}
+
+.roster-data {
+  @include flex-row;
+  @include grey;
+  >div {
+    flex: 1 0;
+    margin: 1px;
+    padding: 3px;
+    text-align: center;
+    font-size: 9pt;
+  }
+}
+
 .card {
+  @include flex-col;
   width: $card-width;
   min-height: $card-height;
   border-radius: 8px;
@@ -46,78 +66,102 @@ body {
   font-size: 10pt;
   padding: $card-padding;
 }
-.row {
-  @include flex-row();
-}
-.col {
-  @include flex-col();
-}
-.model div {
-  @include row-data(1px);
-  @include flex-col();
-  flex: 1 0 cell-width(10);
-  justify-content: space-evenly;
-}
-.weapon>div {
-  @include row-data(2px);
-  flex: 0 0 cell-width(5);
-  &:last-child {
-    flex: 1 0;
-  }
-}
-.red {
- background-color: $red;
- text-transform: uppercase;
- border-top: 1px solid #000000;
- border-bottom: 1px solid #000000;
-}
-.grey>div {
-  background-color: $grey;
-}
-.long-string>div {
-  &:last-child {
-    font-size: 9pt;
-  }
-}
-.bold {
-  font-weight: bold;
-  font-family: 'Oswald', sans-serif;
-}
-.pl3 {
-  padding-left: 3px;
-}
-#campaign {
-  margin-bottom: 20px;
-}
-.campaign>div {
-  flex: 1 0;
-  margin: 1px;
-  padding: 3px;
-  border: 1px solid #000;
-}
-.roster>div {
-  flex: 1 0;
-  margin: 1px;
-  padding: 3px;
-  text-align: center;
-  font-size: 9pt;
-}
+
 .title {
-  @include flex-row();
+  @include flex-row;
   margin-bottom: 3px;
-  &>div {
-    @include bold();
+  >div {
+    @include bold;
     flex: 1 0;
     text-align: center;
     &:first-child {
       text-align: left;
+      flex: 2 0;
     }
     &:last-child {
       text-align: right;
+      flex: 2 0;
     }
   }
 }
+
+.row {
+  @include flex-row;
+}
+
+.col {
+  @include flex-col;
+}
+
+.model-header {
+  @include flex-row;
+  @include bold;
+  @include red;  
+  div {
+    @include row-common(1px);
+    flex: 1 0 cell-width(10);
+  }
+}
+
+.model-data {
+  @include flex-row;
+  @include grey;
+  font-weight: bold;
+  div {
+    @include flex-col;
+    @include row-common(1px);
+    flex: 1 0 cell-width(10);
+    justify-content: space-evenly;
+  }
+}
+
+.wargear-header {
+  @include flex-row;
+  @include bold;
+  @include red;
+  div {
+    @include row-common(2px);
+    flex: 0 0 cell-width(5);
+    &:last-child {
+      flex: 1 0;
+    }
+  }
+}
+
+.wargear-data {
+  @include flex-row;
+  @include grey;
+  >div {
+    @include row-common(2px);
+    flex: 0 0 cell-width(5);
+    &:last-child {
+      flex: 1 0;
+      font-size: 9pt;
+    }
+  }
+}
+
+.ability-header {
+  @include flex-row;
+  @include bold;
+  padding-left: 3px;
+}
+
+.ability-data {
+  @include flex-row;
+  @include grey;
+  >div {
+    @include row-common(2px);
+    flex: 0 0;
+    &:last-child {
+      flex: 1 0;
+      font-size: 9pt;
+    }
+  }
+}
+
 .exp {
+  @include flex-row;
   flex-grow: 1;
   font-size: 8pt;
   margin-top: 3px;
@@ -138,7 +182,7 @@ body {
 }
 
 @media print {
-  #roster {
+  #campaign, #roster {
     page-break-after: always;
   }
   .card {

@@ -6,7 +6,8 @@
     <xsl:output method="html" indent="yes"/>
     
     <xsl:variable name="specialisms" select="'Leader|Combat|Zealot|Demolitions|Comms|Veteran|Scout|Heavy|Medic|Sniper|Strength|Strategist'"/>
-    <xsl:variable name="advances" select="'1. Fleet|2. Lucky|3. Courageous|4. Skilled|5. Lethal|6. Die-hard'"/>
+		<xsl:variable name="advances" select="'1. Fleet|2. Lucky|3. Courageous|4. Skilled|5. Lethal|6. Die-hard'"/>
+		<xsl:variable name="levels" select="'Level 1|Level 2|Level 3|Level 4'"/>
 
 	<xsl:template match="bs:roster/bs:forces/bs:force">
 		<html>
@@ -30,8 +31,11 @@
 
 			<xsl:if test="contains($list-configuration/@name, 'Campaign') or contains(@name, 'Roster')">
 				<section id="roster">
+					<div>
+						<h1>command roster</h1>
+					</div>
 					<div class="col">
-						<div class="row roster red bold">
+						<div class="roster-header">
 							<div>name</div>
 							<div>model type</div>
 							<div>wargear</div>

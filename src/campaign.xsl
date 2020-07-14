@@ -1,16 +1,16 @@
 <xsl:template name="campaign">
-  <div class="row campaign">
-    <div class="red bold">Player Name</div>
+  <div class="campaign">
+    <div class="campaign-header">Player Name</div>
     <div></div>
-    <div class="red bold">Resources</div>
-    <div class="red bold">Current Kill Team Force</div>
+    <div class="campaign-header">Resources</div>
+    <div class="campaign-header">Current Kill Team Force</div>
     <div>
       <xsl:value-of select="round(../../bs:costs/bs:cost/@value)"/>
       Points
     </div>
   </div>
-  <div class="row campaign">
-    <div class="red bold">Faction</div>
+  <div class="campaign">
+    <div class="campaign-header">Faction</div>
     <div>
       <xsl:value-of select="@catalogueName"/>
     </div>
@@ -22,11 +22,11 @@
         <xsl:value-of select=".//bs:selection[@name='Intelligence']/@number"/>
       </div>
     </div>
-    <div class="red bold">Current Kill Team's Name</div>
+    <div class="campaign-header">Current Kill Team's Name</div>
     <div></div>
   </div>
-  <div class="row campaign">
-    <div class="red bold">Mission</div>
+  <div class="campaign">
+    <div class="campaign-header">Mission</div>
     <div></div>
     <div class="row">
       <div>
@@ -39,8 +39,8 @@
     <div></div>
     <div></div>
   </div>
-  <div class="row campaign">
-    <div class="red bold">Background</div>
+  <div class="campaign">
+    <div class="campaign-header">Background</div>
     <div></div>
     <div class="row">
       <div>
@@ -53,8 +53,8 @@
     <div></div>
     <div></div>
   </div>
-  <div class="row campaign">
-    <div class="red bold">Squad Quirk</div>
+  <div class="campaign">
+    <div class="campaign-header">Squad Quirk</div>
     <div></div>
     <div class="row">
       <div>
