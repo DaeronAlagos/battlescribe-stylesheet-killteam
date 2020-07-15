@@ -193,9 +193,50 @@
 
 <xsl:template name="exp">
   <div class="exp">
-    <div>Experience: <span>&#9744;</span><span>&#9744;</span><span>&#9744;</span><span>&#9744;</span><span>&#9744;</span><span>&#9744;</span><span>&#9744;</span><span>&#9744;</span><span>&#9744;</span><span>&#9744;</span><span>&#9744;</span><span>&#9744;</span></div>
-    <div>Flesh Wounds: &#9744; &#9744; &#9744;</div>
-    <div>Convalescence: &#9744;</div>
-    <div>New Recruit: &#9744;</div>
+    <div>
+      <div>
+        Experience:
+      </div>
+      <div class="checkbox">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div>
+      <div>
+        Flesh Wounds:
+      </div>
+      <div class="checkbox">
+        <div></div>
+        <div></div>
+        <div></div>  
+      </div>
+    </div>
+    <div>
+      <div>
+        Convalescence:
+      </div>
+      <div class="checkbox">
+        <div></div>
+      </div>
+    </div>
+    <div>
+      <div>
+        New Recruit:
+      </div>
+      <div class="checkbox">
+        <div></div>
+      </div>
+    </div>
   </div>
 </xsl:template>
