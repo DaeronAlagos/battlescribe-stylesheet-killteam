@@ -29,7 +29,7 @@
 				</section>
 			</xsl:if>
 
-			<xsl:if test="contains($list-configuration/@name, 'Campaign') or contains(@name, 'Roster')">
+			<xsl:if test="contains($list-configuration/@name, 'Campaign') or contains($list-configuration/@name, 'Roster')">
 				<section id="roster">
 					<div>
 						<h1>command roster</h1>
