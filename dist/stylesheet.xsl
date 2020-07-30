@@ -72,6 +72,10 @@ h1 {
     padding: 3px;
     text-align: center;
     font-size: 9pt; }
+    .roster-data > div:first-child {
+      margin: 1px 1px 1px 0; }
+    .roster-data > div:last-child {
+      margin: 1px 0 1px 1px; }
 
 .card {
   display: flex;
@@ -227,12 +231,25 @@ h1 {
 .exp {
   display: flex;
   flex-flow: row nowrap;
+  justify-content: space-between;
   flex-grow: 1;
   font-size: 8pt;
   margin-top: 3px; }
-  .exp > div {
+  .exp div {
+    display: flex;
+    flex-flow: row nowrap;
     align-self: flex-end;
-    margin: 0 2px; }
+    line-height: 0.8; }
+
+.checkbox {
+  margin: 0 3px; }
+  .checkbox div {
+    border: 1px solid #000000;
+    height: 6px;
+    width: 6px;
+    margin: 0 1px; }
+  .checkbox div:nth-child(3), .checkbox div:nth-child(7), .checkbox div:nth-child(12) {
+    border-color: #E1501E; }
 
 @media screen {
   #cards {
@@ -244,7 +261,7 @@ h1 {
 @media print {
   #campaign, #roster {
     page-break-after: always; }
-  .card {
+  .card, .roster-data {
     page-break-inside: avoid; } }
 
 					<!-- endinject -->
@@ -261,12 +278,11 @@ h1 {
 				</section>
 			</xsl:if>
 
-			<xsl:if test="contains($list-configuration/@name, 'Campaign') or contains(@name, 'Roster')">
+			<xsl:if test="contains($list-configuration/@name, 'Campaign') or contains($list-configuration/@name, 'Roster')">
 				<section id="roster">
 					<div>
 						<h1>command roster</h1>
 					</div>
-					<div class="col">
 						<div class="roster-header">
 							<div>name</div>
 							<div>model type</div>
@@ -277,7 +293,6 @@ h1 {
 							<div>pts</div>
 						</div>
 						<xsl:apply-templates select="bs:selections" mode="roster"/>
-					</div>
 				</section>
 			</xsl:if>
 
@@ -608,10 +623,51 @@ h1 {
 
 <xsl:template name="exp">
   <div class="exp">
-    <div>Experience: <span>&#9744;</span><span>&#9744;</span><span>&#9744;</span><span>&#9744;</span><span>&#9744;</span><span>&#9744;</span><span>&#9744;</span><span>&#9744;</span><span>&#9744;</span><span>&#9744;</span><span>&#9744;</span><span>&#9744;</span></div>
-    <div>Flesh Wounds: &#9744; &#9744; &#9744;</div>
-    <div>Convalescence: &#9744;</div>
-    <div>New Recruit: &#9744;</div>
+    <div>
+      <div>
+        Experience:
+      </div>
+      <div class="checkbox">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div>
+      <div>
+        Flesh Wounds:
+      </div>
+      <div class="checkbox">
+        <div></div>
+        <div></div>
+        <div></div>  
+      </div>
+    </div>
+    <div>
+      <div>
+        Convalescence:
+      </div>
+      <div class="checkbox">
+        <div></div>
+      </div>
+    </div>
+    <div>
+      <div>
+        New Recruit:
+      </div>
+      <div class="checkbox">
+        <div></div>
+      </div>
+    </div>
   </div>
 </xsl:template>
   <!-- endinject -->
