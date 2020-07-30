@@ -206,7 +206,7 @@ h1 {
   #campaign, #roster {
     page-break-after: always;
   }
-  .card {
+  .card, .roster-data {
     page-break-inside: avoid;
   }
 }

@@ -34,7 +34,6 @@
 					<div>
 						<h1>command roster</h1>
 					</div>
-					<div class="col">
 						<div class="roster-header">
 							<div>name</div>
 							<div>model type</div>
@@ -45,7 +44,6 @@
 							<div>pts</div>
 						</div>
 						<xsl:apply-templates select="bs:selections" mode="roster"/>
-					</div>
 				</section>
 			</xsl:if>
 
