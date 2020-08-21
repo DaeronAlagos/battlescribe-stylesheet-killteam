@@ -1,46 +1,16 @@
-@function cell-width($number) {
-  @return (($card-width - ($card-padding * 2) - ($cell-margin * ($number * 2)) - $card-first-child-width - $card-last-child-width) / $number);
+@function cell-width($number, $first:0, $last:0) {
+  @return calc(($card-width - 14px - 10px - $first - $last) / $number);
 }
 
-@mixin flex-col {
-  display: flex;
-  flex-flow: column nowrap;
+@mixin cell-border {
+  border-style: solid;
+  border-width: 0 2px 2px;
+  border-color: transparent;
+  background-clip: padding-box;  
 }
 
-@mixin flex-row {
-  display: flex;
-  flex-flow: row nowrap;
-}
-
-@mixin bold {
-  font-weight: bold;
-  font-family: 'Oswald', sans-serif;
-}
-
-@mixin red {
-  background-color: $red;
-  border-top: 1px solid #000000;
-  border-bottom: 1px solid #000000;
-  text-transform: uppercase;
-}
-
-@mixin grey {
-  >div {
-    background-color: $grey;
-  }
-}
-
-@mixin row-common($padding) {
-  text-align: center;
-  margin: $cell-margin;
-  padding: $padding;
-  &:first-child {
-    flex: 0 0 $card-first-child-width;
-    text-align: left;
-    padding-left: 3px;
-    margin: 1px 1px 1px 0;
-  }
-  &:last-child {
-    margin: 1px 0 1px 1px;
-  }
+@mixin first-data-cell {
+  width: $first-cell;
+  text-align: left;
+  padding-left: 4px;
 }

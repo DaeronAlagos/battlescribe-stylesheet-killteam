@@ -1,196 +1,191 @@
 @import 'variables';
-@import 'mixins';
+// @import 'mixins';
 @import url('https://fonts.googleapis.com/css?family=Oswald:600|EB+Garamond:400,400i,700');
 
 body {
   font-family: 'EB Garamond', serif;
 }
 
-h1 {
-  @include bold;
-  text-align: center;
-  font-size: 42pt;
-  margin: 0;
-  text-transform: uppercase;
+section {
+  margin-top: 20px;
 }
 
-#campaign {
-  margin-bottom: 20px;
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 36pt;
+  font-family: 'Oswald', sans-serif;
+  margin: 0;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 9pt;
+}
+
+th {
+  background-color: $red;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 2px;
 }
 
 .campaign {
-  @include flex-row;
-  >div {
-    flex: 1 0;
-    margin: 1px;
-    padding: 3px;
-    border: 1px solid #000;
+  & th {
+    height: 40px;
+    font-size: 10pt;
+  }
+  & td {
+    height: 40px;
+    font-size: 12pt;
+    text-align: center;
+    background-color: $light-grey;
+    @include cell-border;
   }
 }
 
-.campaign-header {
-  @include bold;
-  @include red;
+.resources td:first-child {
+  text-align: left;
+  padding-left: 10px;
 }
 
-.roster-header {
-  @include flex-row;
-  @include bold;
-  @include red;
-  div {
-    flex: 1 0;
-    margin: 1px;
-    padding: 3px;
-    text-align: center;
-  }
-}
-
-.roster-data {
-  @include flex-row;
-  @include grey;
-  >div {
-    flex: 1 0;
-    margin: 1px;
-    padding: 3px;
-    text-align: center;
-    font-size: 9pt;
+.roster {
+  & th {
+    width: cell-width(8);
+    @include cell-border;
     &:first-child {
-      margin: 1px 1px 1px 0;
+      text-align: left;
+      padding-left: 4px;
     }
-    &:last-child {
-      margin: 1px 0 1px 1px;
+    &:nth-child(5) {
+      width: cell-width(7) * 2;
+    }
+  }
+  & td {
+    width: cell-width(8);
+    text-align: center;
+    background-color: $grey;
+    @include cell-border;
+    padding: 2px;
+    &:first-child {
+      text-align: left;
+      padding-left: 4px;
+    }
+    &:nth-child(5) {
+      width: cell-width(7) * 2;
     }
   }
 }
 
 .card {
-  @include flex-col;
   width: $card-width;
   min-height: $card-height;
-  border-radius: 8px;
-  border: 1px solid #BBBBBB;
-  font-size: 10pt;
   padding: $card-padding;
+  border: 1px solid #CCC;
+  border-radius: 8px;
+  display: table;
 }
 
-.title {
-  @include flex-row;
-  margin-bottom: 3px;
-  >div {
-    @include bold;
-    flex: 1 0;
-    text-align: center;
-    &:first-child {
-      text-align: left;
-      flex: 2 0;
-    }
-    &:last-child {
-      text-align: right;
-      flex: 2 0;
-    }
-  }
-}
 
-.row {
-  @include flex-row;
-}
-
-.col {
-  @include flex-col;
-}
-
-.model-header {
-  @include flex-row;
-  @include bold;
-  @include red;  
-  div {
-    @include row-common(1px);
-    flex: 1 0 cell-width(10);
-  }
-}
-
-.model-data {
-  @include flex-row;
-  @include grey;
+.title tbody td {
+  text-align: center;
   font-weight: bold;
-  div {
-    @include flex-col;
-    @include row-common(1px);
-    flex: 1 0 cell-width(10);
-    justify-content: space-evenly;
+  font-size: 10pt;
+  &:first-child {
+    text-align: left;
+  }
+  &:last-child {
+    text-align: right;
   }
 }
 
-.wargear-header {
-  @include flex-row;
-  @include bold;
-  @include red;
-  div {
-    @include row-common(2px);
-    flex: 0 0 cell-width(5);
-    &:last-child {
-      flex: 1 0;
-    }
+.model thead tr, .wargear thead tr {
+  border-style: solid;
+  border-width: 1px 0px;
+  border-color: #000;
+}
+
+.model th, .model td {
+  text-align: center;
+  padding: 2px;
+  font-weight: bold;
+  &:first-child {
+    @include first-data-cell;
   }
 }
 
-.wargear-data {
-  @include flex-row;
-  @include grey;
-  >div {
-    @include row-common(2px);
-    flex: 0 0 cell-width(5);
-    &:last-child {
-      flex: 1 0;
-      font-size: 9pt;
-    }
+.model td {
+  font-size: 10pt;
+}
+
+.model tbody td, .wargear tbody td, .ability tbody td {
+  background-color: $grey;
+  @include cell-border;
+  &:first-child {
+    border-width: 0 2px 2px 0;
+  }
+  &:last-child {
+    border-width: 0 0 2px 2px;
+    font-size: 8pt;
   }
 }
 
-.ability-header {
-  @include flex-row;
-  @include bold;
-  padding-left: 3px;
+.wargear th, .wargear td {
+  text-align: center;
+  width: cell-width(5, 75px, 100px);
+  padding: 2px;
+  &:first-child {
+    @include first-data-cell;
+  }
+  &:last-child {
+    min-width: $last-cell;
+    width: auto;
+  }
 }
 
-.ability-data {
-  @include flex-row;
-  @include grey;
-  >div {
-    @include row-common(2px);
-    flex: 0 0;
-    &:last-child {
-      flex: 1 0;
-      font-size: 9pt;
-    }
+.ability-title {
+  font-weight: bold;
+  padding: 0 0 2px 2px;
+  text-transform: uppercase;
+  font-size: 10pt;
+  font-family: 'Oswald', sans-serif;
+  & td:first-child {
+    width: $first-cell;
   }
+  & td:last-child {
+    padding-left: 8px;
+  }
+}
+
+.ability tbody td {
+  text-align: center;
+  padding: 2px;
+  &:first-child {
+    @include first-data-cell;
+  }
+}
+
+.card-footer {
+  display: table-footer-group;
 }
 
 .exp {
-  @include flex-row;
-  justify-content: space-between;
-  flex-grow: 1;
+  table-layout: auto;
   font-size: 8pt;
-  margin-top: 3px;
-  div {
-    @include flex-row;
-    align-self: flex-end;
-    line-height: 0.8;
+  & td {
+    text-align: center;
+  }
+  & span {
+    font-size: 7pt;
+  }
+  & span:nth-child(3), span:nth-child(7), span:nth-child(12) {
+    color: $red;
   }
 }
 
-.checkbox {
-  margin: 0 3px;
-  div {
-    border: 1px solid #000000;
-    height: 6px;
-    width: 6px;
-    margin: 0 1px;
-  }
-  div:nth-child(3), div:nth-child(7), div:nth-child(12) {
-    border-color: $red;
-  }
-}
 
 @media screen {
   #cards {
@@ -203,7 +198,7 @@ h1 {
 }
 
 @media print {
-  #campaign, #roster {
+  #roster {
     page-break-after: always;
   }
   .card, .roster-data {
