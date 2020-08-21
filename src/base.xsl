@@ -20,6 +20,13 @@
 		</head>
 		<body>
 			<xsl:variable name="list-configuration" select=".//bs:selection[@name='List Configuration']//bs:selection"/>
+			<xsl:if test="contains($list-configuration/@name, 'Campaign') or contains($list-configuration/@name, 'Roster')">
+				<section id="title">
+					<div>
+						<h1>command roster</h1>
+					</div>
+				</section>
+			</xsl:if>
 
 			<xsl:if test="contains($list-configuration/@name, 'Campaign')">
 				<section id="campaign">
@@ -31,19 +38,19 @@
 
 			<xsl:if test="contains($list-configuration/@name, 'Campaign') or contains($list-configuration/@name, 'Roster')">
 				<section id="roster">
-					<div>
-						<h1>command roster</h1>
-					</div>
-						<div class="roster-header">
-							<div>name</div>
-							<div>model type</div>
-							<div>wargear</div>
-							<div>exp</div>
-							<div style="flex: 2 0;">specialism/abilities</div>
-							<div>demeanour</div>
-							<div>pts</div>
-						</div>
+					<table class="roster">
+						<tr>
+							<th>name</th>
+							<th>model type</th>
+							<th>wargear</th>
+							<th>exp</th>
+							<th>specialism/abilities</th>
+							<th>demeanour</th>
+							<th>pts</th>
+						</tr>
 						<xsl:apply-templates select="bs:selections" mode="roster"/>
+					</table>
+
 				</section>
 			</xsl:if>
 

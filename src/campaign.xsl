@@ -1,70 +1,73 @@
 <xsl:template name="campaign">
-  <div class="campaign">
-    <div class="campaign-header">Player Name</div>
-    <div></div>
-    <div class="campaign-header">Resources</div>
-    <div class="campaign-header">Current Kill Team Force</div>
-    <div>
-      <xsl:value-of select="round(../../bs:costs/bs:cost/@value)"/>
-      Points
-    </div>
-  </div>
-  <div class="campaign">
-    <div class="campaign-header">Faction</div>
-    <div>
-      <xsl:value-of select="@catalogueName"/>
-    </div>
-    <div class="row">
-      <div>
-        <xsl:value-of select=".//bs:selection[@name='Intelligence']/@name"/>
-      </div>
-      <div>
-        <xsl:value-of select=".//bs:selection[@name='Intelligence']/@number"/>
-      </div>
-    </div>
-    <div class="campaign-header">Current Kill Team's Name</div>
-    <div></div>
-  </div>
-  <div class="campaign">
-    <div class="campaign-header">Mission</div>
-    <div></div>
-    <div class="row">
-      <div>
-        <xsl:value-of select=".//bs:selection[@name='Materiel']/@name"/>
-      </div>
-      <div>
-        <xsl:value-of select=".//bs:selection[@name='Materiel']/@number"/>
-      </div>
-    </div>
-    <div></div>
-    <div></div>
-  </div>
-  <div class="campaign">
-    <div class="campaign-header">Background</div>
-    <div></div>
-    <div class="row">
-      <div>
-        <xsl:value-of select=".//bs:selection[@name='Morale']/@name"/>
-      </div>
-      <div>
-        <xsl:value-of select=".//bs:selection[@name='Morale']/@number"/>
-      </div>
-    </div>
-    <div></div>
-    <div></div>
-  </div>
-  <div class="campaign">
-    <div class="campaign-header">Squad Quirk</div>
-    <div></div>
-    <div class="row">
-      <div>
-        <xsl:value-of select=".//bs:selection[@name='Territory']/@name"/>
-      </div>
-      <div>
-        <xsl:value-of select=".//bs:selection[@name='Territory']/@number"/>
-      </div>
-    </div>
-    <div></div>
-    <div></div>
-  </div>
+  <table class="campaign">
+    <tr>
+      <th>Player Name</th>
+      <td></td>
+      <th>Resources</th>
+      <th>Current Kill Team Force</th>
+      <td>
+        <xsl:value-of select="round(../../bs:costs/bs:cost/@value)"/>
+        Points
+      </td>
+    </tr>
+    <tr>
+      <th>Faction</th>
+      <td>
+        <xsl:value-of select="@catalogueName"/>
+      </td>
+      <td>
+        <table class="resources">
+          <tr>
+            <td><xsl:value-of select=".//bs:selection[@name='Intelligence']/@name"/></td>
+            <td><xsl:value-of select=".//bs:selection[@name='Intelligence']/@number"/></td>
+          </tr>
+        </table>
+      </td>
+      <th>Current Kill Team's Name</th>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Mission</th>
+      <td></td>
+      <td>
+        <table class="resources">
+          <tr>
+            <td><xsl:value-of select=".//bs:selection[@name='Materiel']/@name"/></td>
+            <td><xsl:value-of select=".//bs:selection[@name='Materiel']/@number"/></td>
+          </tr>
+        </table>
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Background</th>
+      <td></td>
+      <td>
+        <table class="resources">
+          <tr>
+            <td><xsl:value-of select=".//bs:selection[@name='Morale']/@name"/></td>
+            <td><xsl:value-of select=".//bs:selection[@name='Morale']/@number"/></td>
+          </tr>
+        </table>
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Squad Quirk</th>
+      <td></td>
+      <td>
+        <table class="resources">
+          <tr>
+            <td><xsl:value-of select=".//bs:selection[@name='Territory']/@name"/></td>
+            <td><xsl:value-of select=".//bs:selection[@name='Territory']/@number"/></td>
+          </tr>
+        </table>
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+
 </xsl:template>
