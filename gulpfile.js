@@ -6,10 +6,7 @@ const rename = require('gulp-rename')
 const sass = require('gulp-sass')
 const gulpInject = require('gulp-inject')
 const autoprefixer = require('gulp-autoprefixer')
-const puppeteer = require('puppeteer');
-const tap = require('gulp-tap');
-const path = require('path');
-require('events').EventEmitter.defaultMaxListeners = 100;
+const html2pdf = require('gulp-html2pdf');  // Requires wkhtmltopdf 0.12.6 (with patched qt)
 
 
 const fileName = args.bsfile
@@ -76,21 +73,13 @@ function copyResult () {
 }
 
 function pdf () {
+  const options = {
+      printMediaType: true,
+      disableSmartShrinking: true
+  }
   return src('build/*.html')
-  .pipe(tap(async (file) => {
-    const browser = await puppeteer.launch({
-        headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
-    });
-    const page = await browser.newPage();
-    await page.goto('file://' + file.path);
-    await page.pdf({
-        path: path.basename(file.basename) + '.pdf',
-        format: 'A4',
-        printBackground: true,
-    });
-    await browser.close();
-  }))
+  .pipe(html2pdf(options))
+  .pipe(dest('demo'))
 }
 
 exports.default = () => {
@@ -99,7 +88,7 @@ exports.default = () => {
         baseDir: './build',
         index: `${fileName}.html`
     },
-    reloadDelay: 2000
+    reloadDelay: 1000
   })
   watch(['src/scss/*.scss', 'src/*.xsl'], series(scss, inject, transform, htmlRename, copyResult))
   watch('build/*.html').on('change', browserSync.reload)
