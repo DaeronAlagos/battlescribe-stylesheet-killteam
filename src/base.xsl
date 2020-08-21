@@ -10,13 +10,15 @@
 		<xsl:variable name="levels" select="'Level 1|Level 2|Level 3|Level 4'"/>
 
 	<xsl:template match="bs:roster/bs:forces/bs:force">
-		<html>
+		<xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;</xsl:text>
+		<html lang="en">
 		<head>
 			<style>
 					<!-- inject:../build/style.css -->
 					<!-- contents of html partials will be injected here -->
           <!-- endinject -->
 			</style>
+			<title>Kill Team Roster</title>
 		</head>
 		<body>
 			<xsl:variable name="list-configuration" select=".//bs:selection[@name='List Configuration']//bs:selection"/>
