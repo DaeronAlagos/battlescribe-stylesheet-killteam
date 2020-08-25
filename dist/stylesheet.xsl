@@ -19,9 +19,6 @@
 body {
   font-family: 'EB Garamond', serif; }
 
-section {
-  margin-top: 20px; }
-
 h1 {
   text-align: center;
   text-transform: uppercase;
@@ -35,12 +32,19 @@ table {
   border-collapse: collapse;
   font-size: 9pt; }
 
-.campaign th {
-  height: 40px;
-  font-size: 10pt;
+th {
   background-color: #E1501E;
   font-family: 'Oswald', sans-serif;
   text-transform: uppercase;
+  text-align: center;
+  padding: 2px; }
+
+#campaign {
+  margin-bottom: 30px; }
+
+.campaign th {
+  height: 40px;
+  font-size: 10pt;
   border-style: solid;
   border-width: 0 2px 2px;
   border-color: transparent;
@@ -52,7 +56,7 @@ table {
   text-align: center;
   background-color: #f1f1f1;
   border-style: solid;
-  border-width: 2px;
+  border-width: 0 2px 2px;
   border-color: transparent;
   background-clip: padding-box; }
 
@@ -62,15 +66,10 @@ table {
 
 .roster th {
   width: 50.125px;
-  background-color: #E1501E;
   border-style: solid;
   border-width: 0 2px 2px;
   border-color: transparent;
-  background-clip: padding-box;
-  font-family: 'Oswald', sans-serif;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 2px; }
+  background-clip: padding-box; }
   .roster th:first-child {
     text-align: left;
     padding-left: 4px; }
@@ -113,12 +112,6 @@ table {
   border-style: solid;
   border-width: 1px 0px;
   border-color: #000; }
-
-.model thead th, .wargear thead th {
-  background-color: #E1501E;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-family: 'Oswald', sans-serif; }
 
 .model th, .model td {
   text-align: center;
@@ -219,15 +212,15 @@ table {
 			</xsl:if>
 
 			<xsl:if test="contains($list-configuration/@name, 'Campaign')">
-				<section id="campaign">
+				<div id="campaign">
 					<xsl:call-template name="campaign">
 						<xsl:with-param name="resources" select=".//bs:selection[@name='Resources']"/>
 					</xsl:call-template>
-				</section>
+				</div>
 			</xsl:if>
 
 			<xsl:if test="contains($list-configuration/@name, 'Campaign') or contains($list-configuration/@name, 'Roster')">
-				<section id="roster">
+				<div id="roster">
 					<table class="roster">
 						<tr>
 							<th>name</th>
@@ -241,12 +234,11 @@ table {
 						<xsl:apply-templates select="bs:selections" mode="roster"/>
 					</table>
 
-				</section>
+				</div>
 			</xsl:if>
 
-			<section id="cards">
-				<xsl:apply-templates select="bs:selections" mode="card"/>
-			</section>
+			<xsl:apply-templates select="bs:selections" mode="card"/>
+
 		</body>
 		</html>
 	</xsl:template>
