@@ -37,7 +37,7 @@ By using this stylesheet to export your roster from Battlescribe, you will be ab
 1. Clone the repository
   `git clone https://github.com/DaeronAlagos/battlescribe-stylesheet-killteam.git`
 
-2. Change to the project folder `cd battlescribe-stylesheets`
+2. Change to the project folder `cd battlescribe-stylesheet-killteam`
 
 3. Install the required NPM modules `npm install`
 
