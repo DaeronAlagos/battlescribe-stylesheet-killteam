@@ -35,13 +35,13 @@ By using this stylesheet to export your roster from Battlescribe, you will be ab
 
 #### Development Process
 1. Clone the repository
-  `git clone https://github.com/DaeronAlagos/battlescribe-stylesheets.git`
+  `git clone https://github.com/DaeronAlagos/battlescribe-stylesheet-killteam.git`
 
 2. Change to the project folder `cd battlescribe-stylesheets`
 
 3. Install the required NPM modules `npm install`
 
-4. Create a roster in Battlescribe and save it as a .ros file (not .rosz), to the battlescribe-stylesheets/data folder
+4. Create a roster in Battlescribe and save it as a .ros file (not .rosz), to the battlescribe-stylesheet-killteam/data folder
 
 5. Build your first distribution file `gulp build`
 
