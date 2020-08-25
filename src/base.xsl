@@ -31,15 +31,15 @@
 			</xsl:if>
 
 			<xsl:if test="contains($list-configuration/@name, 'Campaign')">
-				<section id="campaign">
+				<div id="campaign">
 					<xsl:call-template name="campaign">
 						<xsl:with-param name="resources" select=".//bs:selection[@name='Resources']"/>
 					</xsl:call-template>
-				</section>
+				</div>
 			</xsl:if>
 
 			<xsl:if test="contains($list-configuration/@name, 'Campaign') or contains($list-configuration/@name, 'Roster')">
-				<section id="roster">
+				<div id="roster">
 					<table class="roster">
 						<tr>
 							<th>name</th>
@@ -53,12 +53,11 @@
 						<xsl:apply-templates select="bs:selections" mode="roster"/>
 					</table>
 
-				</section>
+				</div>
 			</xsl:if>
 
-			<section id="cards">
-				<xsl:apply-templates select="bs:selections" mode="card"/>
-			</section>
+			<xsl:apply-templates select="bs:selections" mode="card"/>
+
 		</body>
 		</html>
 	</xsl:template>

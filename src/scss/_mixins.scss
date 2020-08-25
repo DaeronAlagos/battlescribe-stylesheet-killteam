@@ -1,5 +1,5 @@
 @function cell-width($number, $first:0, $last:0) {
-  @return calc(($card-width - 14px - 10px - $first - $last) / $number);
+  @return ($card-width - 14px - 10px - $first - $last) / $number;
 }
 
 @mixin cell-border {

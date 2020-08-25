@@ -1,13 +1,9 @@
 @import 'variables';
-// @import 'mixins';
+@import 'mixins';
 @import url('https://fonts.googleapis.com/css?family=Oswald:600|EB+Garamond:400,400i,700');
 
 body {
   font-family: 'EB Garamond', serif;
-}
-
-section {
-  margin-top: 20px;
 }
 
 h1 {
@@ -33,10 +29,15 @@ th {
   padding: 2px;
 }
 
+#campaign {
+  margin-bottom: 30px;
+}
+
 .campaign {
   & th {
     height: 40px;
     font-size: 10pt;
+    @include cell-border;
   }
   & td {
     height: 40px;
